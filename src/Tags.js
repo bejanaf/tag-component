@@ -19,17 +19,20 @@ export default function Tags({ tags, onUpdateTags }) {
   return (
     <Tag>
       <label htmlFor="tag">Player Skills</label>
-      <input
-        type="text"
-        name="tag"
-        value={tag}
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
       <TagCloud>
         {tags.map((tag, index) => (
-          <span key={index + tag}>{tag}</span>
+          <span key={index + tag}>
+            {tag}
+            <button>x</button>
+          </span>
         ))}
+        <input
+          type="text"
+          name="tag"
+          value={tag}
+          onChange={handleChange}
+          onKeyDown={handleKeyDown}
+        />
       </TagCloud>
     </Tag>
   );
@@ -41,15 +44,19 @@ const Tag = styled.section`
   font-family: sans-serif;
 
   input {
+    border: none;
+    outline: none;
     padding: 0.5rem;
+    width: 100%;
   }
 `;
 
 const TagCloud = styled.div`
   display: flex;
-  flex-wrap: wrap;
+  border: 2px solid black;
 
   span {
+    display: flex;
     background: deepskyblue;
     color: ivory;
     padding: 0.3rem;
